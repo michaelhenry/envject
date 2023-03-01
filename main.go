@@ -10,20 +10,27 @@ import (
 )
 
 func replaceEnvVariables(input string) string {
-    // Define a regular expression to match strings starting with $
-    envPattern := regexp.MustCompile(`\$(\w+)`)
+	// Handling the following formats:
+	// - $ENV_NAME
+	// - ${ENV_NAME}
+	// - $(ENV_NAME)
+	envPattern := regexp.MustCompile(`\$([\{|\(]?(\w+)[\}|\)]?)\.?`)
 
-    // Replace all matches with their corresponding environment variable value
-    replaced := envPattern.ReplaceAllStringFunc(input, func(match string) string {
-        envName := strings.TrimPrefix(match, "$")
-        envValue, found := os.LookupEnv(envName)
-        if found {
-            return envValue
-        } else {
-            return match // If the variable is not found, leave the original string as-is
-        }
-    })
-    return replaced
+	// Replace all matches with the corresponding environment variable value
+	return envPattern.ReplaceAllStringFunc(input, func(match string) string {
+		envName := strings.TrimPrefix(match, "$")
+		envName = strings.TrimPrefix(envName, "(")
+		envName = strings.TrimPrefix(envName, "{")
+		envName = strings.TrimSuffix(envName, "}")
+		envName = strings.TrimSuffix(envName, ")")
+
+		envValue, found := os.LookupEnv(envName)
+		if found {
+			return envValue
+		} else {
+			return match // If the variable is not found, leave the original string as-is
+		}
+	})
 }
 
 func main() {
