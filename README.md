@@ -1,9 +1,29 @@
 # envject
 
-An environment variables injector.
+ A command-line tool for injecting environment variables to any file. Useful for any configuration and CI.
 
-## To use
+Inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go.
+
+## Installation
+
+### Install from source
 
 ```shell
- go run main.go -file=sample.config.txt -debug=true
+go run main.go -file=sample.config.txt -debug=true
 ```
+
+### Grab the binary from the release tags
+
+- https://github.com/michaelhenry/envject/releases
+
+### Using Homebrew
+
+```shell
+brew tap michaelhenry/envject
+brew install envject
+```
+
+
+## LICENSE
+
+MIT
