@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf bin
 # Compile for Linux amd64
 export GOOS=linux
 export GOARCH=amd64

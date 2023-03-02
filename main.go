@@ -42,7 +42,8 @@ func main() {
 	// Load the file contents
 	fileBytes, err := ioutil.ReadFile(*filePath)
 	if err != nil {
-			panic(err)
+		fmt.Println(err)
+		return
 	}
 
 	fileContent := string(fileBytes)
@@ -56,8 +57,9 @@ func main() {
 	// Write the updated content to the same file
 	err = ioutil.WriteFile(*filePath, []byte(updatedContent), 0644)
 	if err != nil {
-			panic(err)
+		fmt.Println(err)
+		return
 	}
 	// Print a success message
-	fmt.Println("File updated successfully!")
+	fmt.Println("Environment variables injected successfully!")
 }
