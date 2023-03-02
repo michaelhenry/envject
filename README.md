@@ -1,5 +1,7 @@
 # envject
 
+An environment variables injector.
+
 ## To use
 
 ```shell
