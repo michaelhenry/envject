@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func replaceEnvVariables(input string) string {
+func ReplaceEnvVariables(input string) string {
 	// Handling the following formats:
 	// - $ENV_NAME
 	// - ${ENV_NAME}
@@ -47,7 +47,7 @@ func main() {
 	}
 
 	fileContent := string(fileBytes)
-	updatedContent := replaceEnvVariables(fileContent)
+	updatedContent := ReplaceEnvVariables(fileContent)
 
 	// Check if debug flag is true
   if flag.Lookup("debug").Value.String() == "true" {

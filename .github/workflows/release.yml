@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version-file: go.mod
+      - run: go test
       - uses: goreleaser/goreleaser-action@v4
         with:
           distribution: goreleaser
