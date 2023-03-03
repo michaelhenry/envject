@@ -9,18 +9,26 @@ Inspired by the functionality of [variable-injector](https://github.com/LucianoP
 ### Install from source
 
 ```shell
-go run main.go -file=sample.config.txt -debug=true
+go run main.go --file sample.config.txt --debug true
 ```
 
 ### Grab the binary from the release tags
 
 - https://github.com/michaelhenry/envject/releases
 
+```shell
+./envject --file sample.config.txt
+```
+
 ### Using Homebrew
 
 ```shell
 brew tap michaelhenry/envject
 brew install envject
+```
+
+```shell
+envject --file sample.config.txt
 ```
 
 
