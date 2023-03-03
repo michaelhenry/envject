@@ -1,8 +1,10 @@
 # envject
 
- A command-line tool for injecting environment variables to any file. Useful for any configuration and CI.
+A command-line tool for injecting environment variables or secrets to any file that has to be compiled especially in iOS.
 
-Inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go.
+I have written a [short article](https://www.iamkel.net/posts/6-ios-secrets-handling) regarding this.
+
+And this is inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go.
 
 ## Installation
 
