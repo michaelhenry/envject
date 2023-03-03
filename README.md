@@ -6,6 +6,13 @@ I have written a [short article](https://www.iamkel.net/posts/6-ios-secrets-hand
 
 And this is inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go and not dependent with the swift toolchain version.
 
+## Demo
+
+![envject](https://user-images.githubusercontent.com/717992/222739771-76c4393e-88b2-406d-b1fa-f392b879bed3.gif)
+
+
+> So inside the CI, this can be executed during pre-compilation.
+
 ## How to use
 
 ### Use from source
