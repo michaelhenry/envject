@@ -4,7 +4,7 @@ A command-line tool for injecting environment variables or secrets to any file t
 
 I have written a [short article](https://www.iamkel.net/posts/6-ios-secrets-handling) regarding this.
 
-And this is inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go.
+And this is inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go and not dependent with the swift toolchain version.
 
 ## How to use
 
