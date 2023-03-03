@@ -9,12 +9,14 @@ import (
 	"strings"
 )
 
+
+
 func ReplaceEnvVariables(input string) string {
 	// Handling the following formats:
 	// - $ENV_NAME
 	// - ${ENV_NAME}
 	// - $(ENV_NAME)
-	envPattern := regexp.MustCompile(`\$([\{|\(]?(\w+)[\}|\)]?)\.?`)
+	envPattern := regexp.MustCompile(`\$(\w+)|\$(\{?(\w+)\})\.?|\$(\(?(\w+)\))\.?`)
 
 	// Replace all matches with the corresponding environment variable value
 	return envPattern.ReplaceAllStringFunc(input, func(match string) string {
