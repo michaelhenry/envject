@@ -10,12 +10,13 @@ import (
 
 func main() {
 	// Define command-line flags
-	filePath := flag.String("file", "", "File to inject environment variables")
+	sourcePath := flag.String("file", "", "File to inject the environment variables")
+	outputPath := flag.String("output", "", "The output file. (This creates a new file instead of overriding the original file.)")
 	flag.Bool("debug", false, "Enable debug mode")
 	flag.Parse()
 
 	// Load the file contents
-	fileBytes, err := ioutil.ReadFile(*filePath)
+	fileBytes, err := ioutil.ReadFile(*sourcePath)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -29,8 +30,12 @@ func main() {
 		fmt.Println(updatedContent)
 	}
 
+	if *outputPath == "" {
+		outputPath = sourcePath
+	}
+
 	// Write the updated content to the same file
-	err = ioutil.WriteFile(*filePath, []byte(updatedContent), 0644)
+	err = ioutil.WriteFile(*outputPath, []byte(updatedContent), 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
