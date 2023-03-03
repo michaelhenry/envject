@@ -10,9 +10,10 @@ And this is inspired by the functionality of [variable-injector](https://github.
 
 ![envject](https://user-images.githubusercontent.com/717992/222741865-e8c51ba1-3660-4c07-a02f-8a630b5a577d.gif)
 
-> So inside the CI, this can be executed during pre-compilation.
+> This can allow us to prevent hard-coding production keys inside the project. So inside the CI, this can be executed during pre-compilation. And then after that, you can then do the obfuscation to guarantee that no strings are readable.
 
-## The Problem with XCode's 
+## The Problem with XCode's configuration
+
 ## How to use
 
 ### Use from source
@@ -39,6 +40,9 @@ brew install envject
 ```shell
 envject --file sample.config.txt
 ```
+
+## Recommendations
+
 
 
 ## LICENSE
