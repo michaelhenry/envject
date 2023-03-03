@@ -34,7 +34,7 @@ func main() {
 		outputPath = sourcePath
 	}
 
-	// Write the updated content to the same file
+	// Write the updated content to the output file
 	err = ioutil.WriteFile(*outputPath, []byte(updatedContent), 0644)
 	if err != nil {
 		fmt.Println(err)
