@@ -1,4 +1,4 @@
-# envject
+# 💉envject
 
 A command-line tool for injecting environment variables or secrets to any file that has to be compiled especially in iOS.
 
