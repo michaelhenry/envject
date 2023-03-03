@@ -6,9 +6,9 @@ I have written a [short article](https://www.iamkel.net/posts/6-ios-secrets-hand
 
 And this is inspired by the functionality of [variable-injector](https://github.com/LucianoPAlmeida/variable-injector) but written in go.
 
-## Installation
+## How to use
 
-### Install from source
+### Use from source
 
 ```shell
 go run main.go --file sample.config.txt --debug true
