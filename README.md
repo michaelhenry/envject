@@ -12,7 +12,7 @@ Inspired by the functionality of [variable-injector](https://github.com/LucianoP
 go run main.go --file sample.config.txt --debug true
 ```
 
-### Grab the binary from the release tags
+### Grab the binary from the release assets
 
 - https://github.com/michaelhenry/envject/releases
 
