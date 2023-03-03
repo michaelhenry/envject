@@ -8,8 +8,7 @@ And this is inspired by the functionality of [variable-injector](https://github.
 
 ## Demo
 
-![envject](https://user-images.githubusercontent.com/717992/222739771-76c4393e-88b2-406d-b1fa-f392b879bed3.gif)
-
+![envject](https://user-images.githubusercontent.com/717992/222741865-e8c51ba1-3660-4c07-a02f-8a630b5a577d.gif)
 
 > So inside the CI, this can be executed during pre-compilation.
 
