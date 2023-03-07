@@ -1,5 +1,7 @@
 # 💉envject
 
+[![codecov](https://codecov.io/gh/michaelhenry/envject/branch/main/graph/badge.svg?token=HT3OK2CB3R)](https://codecov.io/gh/michaelhenry/envject)
+
 A command-line tool for injecting environment variables or secrets to any file that has to be compiled especially in iOS.
 
 I have written a [short article](https://www.iamkel.net/posts/6-ios-secrets-handling) regarding this.
