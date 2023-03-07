@@ -55,6 +55,12 @@ brew install envject
 envject --file sample.config.txt
 ```
 
+To avoid brew from updating which usually taking some time:
+
+```
+export HOMEBREW_NO_AUTO_UPDATE=1 
+```
+
 ## Recommendations
 
 
