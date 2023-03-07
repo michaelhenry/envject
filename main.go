@@ -3,8 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"io/ioutil"
 	"michaelhenry/envject/parser"
+	"os"
 )
 
 
@@ -16,7 +16,7 @@ func main() {
 	flag.Parse()
 
 	// Load the file contents
-	fileBytes, err := ioutil.ReadFile(*sourcePath)
+	fileBytes, err := os.ReadFile(*sourcePath)
 	if err != nil {
 		fmt.Println(err)
 		return
@@ -35,7 +35,7 @@ func main() {
 	}
 
 	// Write the updated content to the output file
-	err = ioutil.WriteFile(*outputPath, []byte(updatedContent), 0644)
+	err = os.WriteFile(*outputPath, []byte(updatedContent), 0644)
 	if err != nil {
 		fmt.Println(err)
 		return
