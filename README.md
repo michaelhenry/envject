@@ -30,7 +30,7 @@ Using an `xcconfig` file in Xcode to store sensitive information and then access
 
 ## Installation/How to use
 
-#### Use from source
+#### Use from source (must have a `go` installed on your machine)
 
 ```shell
 git clone https://github.com/michaelhenry/envject/
@@ -47,7 +47,7 @@ go run main.go --file sample.config.txt --debug true
 ./envject --file sample.config.txt
 ```
 
-#### Using Homebrew
+#### Using Homebrew (Recommended)
 
 ```shell
 brew tap michaelhenry/envject
@@ -63,8 +63,6 @@ To avoid brew from updating which usually taking some time:
 ```
 export HOMEBREW_NO_AUTO_UPDATE=1 
 ```
-
-## Recommendations
 
 
 ## LICENSE
