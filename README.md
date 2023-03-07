@@ -28,15 +28,18 @@ Using an `xcconfig` file in Xcode to store sensitive information and then access
 
 **Debugging**: Debugging issues related to `.xcconfig` files and `Info.plist` files can be challenging, particularly if there are issues related to sensitive information.
 
-## How to use
+## Installation/How to use
 
-### Use from source
+#### Use from source
 
 ```shell
+git clone https://github.com/michaelhenry/envject/
+cd envject
+
 go run main.go --file sample.config.txt --debug true
 ```
 
-### Grab the binary from the release assets
+#### Download the binary file from the release assets page.
 
 - https://github.com/michaelhenry/envject/releases
 
@@ -44,7 +47,7 @@ go run main.go --file sample.config.txt --debug true
 ./envject --file sample.config.txt
 ```
 
-### Using Homebrew
+#### Using Homebrew
 
 ```shell
 brew tap michaelhenry/envject
@@ -62,7 +65,6 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 ```
 
 ## Recommendations
-
 
 
 ## LICENSE
