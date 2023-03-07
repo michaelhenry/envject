@@ -14,7 +14,19 @@ And this is inspired by the functionality of [variable-injector](https://github.
 
 > This can allow us to prevent hard-coding production keys inside the project. So inside the CI, this can be executed during pre-compilation. And then after that, you can then do the obfuscation to guarantee that no strings are readable.
 
-## The Problem with XCode's configuration
+## The Problem with default Xcode's configuration (`.xcconfig`)
+
+Using an `xcconfig` file in Xcode to store sensitive information and then accessing that information from the `Info.plist` file can have some potential downsides:
+
+**Security risks**: Storing sensitive information in an xcconfig file can be a security risk. If you then use that information in the `Info.plist` file, it could be easier for an attacker to find and exploit that information.
+
+**Complexity**: Accessing sensitive information through an xcconfig file and the `Info.plist` file can add complexity to your project, making it more difficult to manage and maintain.
+
+**Increased chance of errors**: Using multiple files to manage your project's configuration settings increases the chance of errors, such as misconfigured settings or missing information.
+
+**Version control conflicts**: If multiple developers are working on the project and are using different xcconfig files or Info.plist files, it can create conflicts in version control systems like Git.
+
+**Debugging**: Debugging issues related to `.xcconfig` files and `Info.plist` files can be challenging, particularly if there are issues related to sensitive information.
 
 ## How to use
 
