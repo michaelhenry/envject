@@ -12,6 +12,8 @@ func main() {
 	// Define command-line flags
 	sourcePath := flag.String("file", "", "File to inject the environment variables")
 	outputPath := flag.String("output", "", "The output file. (This creates a new file instead of overriding the original file.)")
+	ignore := flag.String("ignore", "", "Regex pattern to ignore.")
+
 	flag.Bool("debug", false, "Enable debug mode")
 	flag.Parse()
 
@@ -22,8 +24,9 @@ func main() {
 		return
 	}
 
+
 	fileContent := string(fileBytes)
-	updatedContent := parser.ReplaceEnvVariables(fileContent)
+	updatedContent := parser.ReplaceEnvVariables(fileContent, *ignore)
 
 	// Check if debug flag is true
   if flag.Lookup("debug").Value.String() == "true" {

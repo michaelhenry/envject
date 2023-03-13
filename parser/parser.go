@@ -7,7 +7,7 @@ import (
 )
 
 
-func ReplaceEnvVariables(input string) string {
+func ReplaceEnvVariables(input string, ignorePattern string) string {
 	// Handling the following formats:
 	// - $ENV_NAME
 	// - ${ENV_NAME}
@@ -21,6 +21,12 @@ func ReplaceEnvVariables(input string) string {
 		envName = strings.TrimPrefix(envName, "{")
 		envName = strings.TrimSuffix(envName, "}")
 		envName = strings.TrimSuffix(envName, ")")
+
+		if ignorePattern != "" {
+			if regexp.MustCompile(ignorePattern).MatchString(envName) {
+				return match
+			}
+		}
 
 		envValue, found := os.LookupEnv(envName)
 		if found {
