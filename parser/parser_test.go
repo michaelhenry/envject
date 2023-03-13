@@ -25,7 +25,7 @@ func TestVenvInject(t *testing.T){
 		let key3 = "This is value 3"
 	}
 	`
-	got := ReplaceEnvVariables(configText)
+	got := ReplaceEnvVariables(configText, "")
 
 	if got != want {
 			t.Errorf("got %q, wanted %q", got, want)
@@ -58,7 +58,7 @@ func TestVenvInjectWithInvalidFormatting(t *testing.T){
 		let key5 = "$(KEY5"
 	}
 	`
-	got := ReplaceEnvVariables(configText)
+	got := ReplaceEnvVariables(configText, "")
 
 	if got != want {
 			t.Errorf("got %q, wanted %q", got, want)
@@ -79,7 +79,39 @@ func TestVenvInjectWithNoSetEnvValues(t *testing.T){
 	}
 	`
 	want := configText
-	got := ReplaceEnvVariables(configText)
+	got := ReplaceEnvVariables(configText, "")
+
+	if got != want {
+			t.Errorf("got %q, wanted %q", got, want)
+	}
+}
+
+func TestVenvInjectWithIgnoreOption(t *testing.T){
+
+	os.Setenv("KEY1", "This is value 1")
+	os.Setenv("KEY2", "This is value 2")
+	os.Setenv("KEY3", "This is value 3")
+	os.Setenv("IGNORE_ME", "This should be ignored")
+	os.Setenv("IGNORE_THIS", "This should be ignored")
+
+	configText := `
+	struct AppConfig {
+		let key1 = "$KEY1"
+		let key2 = "${KEY2}"
+		let key3 = "$(KEY3)"
+		let key4 = "${IGNORE_ME}"
+		let key5 = "${IGNORE_THIS}"
+	}`
+	want := `
+	struct AppConfig {
+		let key1 = "This is value 1"
+		let key2 = "This is value 2"
+		let key3 = "This is value 3"
+		let key4 = "${IGNORE_ME}"
+		let key5 = "${IGNORE_THIS}"
+	}`
+
+	got := ReplaceEnvVariables(configText, "^IGNORE_")
 
 	if got != want {
 			t.Errorf("got %q, wanted %q", got, want)
