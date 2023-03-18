@@ -16,5 +16,14 @@ jobs:
         with:
           go-version-file: go.mod
       - run: go test ./parser -coverprofile=coverage.out -v
+
+      - name: Test Swift Demo sample project
+        run: |
+          cd Examples/swift
+          go run ../../main.go --file Sources/Demo/Secrets.swift --obfuscate-for=swift
+          swift test
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
