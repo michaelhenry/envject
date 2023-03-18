@@ -61,10 +61,28 @@ envject --file sample.config.txt
 To avoid brew from updating which usually taking some time:
 
 ```
-export HOMEBREW_NO_AUTO_UPDATE=1 
+export HOMEBREW_NO_AUTO_UPDATE=1
 ```
 
+
+## String obfuscation
+
+**envject** is also supporting string obfuscation using the `obfuscate-for` flag.
+
+For example:
+
+### On Swift project
+
+```bash
+envject --file Sources/Demo/Secrets.swift --obfuscate-for swift
+```
+![Swift-demo](Examples/swift/images/envject-swift-demo.gif)
 
 ## LICENSE
 
 MIT
+
+
+## Other reference
+
+- [Secret Management on iOS](https://nshipster.com/secrets/)
