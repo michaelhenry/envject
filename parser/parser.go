@@ -36,7 +36,7 @@ func ReplaceEnvVariables(input string, ignorePattern string, valueEncoder value_
 		}
 	})
 
-	if modifiedContent != input && valueEncoder.AdditionalCode() != "" {
+	if  valueEncoder.AdditionalCode() != "" && modifiedContent != input && !strings.Contains(modifiedContent, valueEncoder.AdditionalCode()) {
 		modifiedContent += valueEncoder.AdditionalCode()
 	}
 	return modifiedContent
