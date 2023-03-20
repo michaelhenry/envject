@@ -32,10 +32,8 @@ func main() {
 	switch strings.ToLower(*obfuscateFor) {
 	case "swift":
 		valueEncoder = value_encoders.NewSwiftValueEncoder()
-			// code to be executed when expression equals value1
 	default:
 		valueEncoder = &value_encoders.RawValueEncoder{}
-			// code to be executed when expression does not match any of the cases
 	}
 
 
