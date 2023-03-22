@@ -1,13 +1,13 @@
 package parser
 
 import (
+	"michaelhenry/envject/value_encoders"
 	"os"
 	"regexp"
 	"strings"
 )
 
-
-func ReplaceEnvVariables(input string, ignorePattern string) string {
+func ReplaceEnvVariables(input string, ignorePattern string, valueEncoder value_encoders.ValueEncoder) string {
 	// Handling the following formats:
 	// - $ENV_NAME
 	// - ${ENV_NAME}
@@ -15,7 +15,7 @@ func ReplaceEnvVariables(input string, ignorePattern string) string {
 	envPattern := regexp.MustCompile(`\$(\w+)|\$(\{?(\w+)\})\.?|\$(\(?(\w+)\))\.?`)
 
 	// Replace all matches with the corresponding environment variable value
-	return envPattern.ReplaceAllStringFunc(input, func(match string) string {
+	modifiedContent := envPattern.ReplaceAllStringFunc(input, func(match string) string {
 		envName := strings.TrimPrefix(match, "$")
 		envName = strings.TrimPrefix(envName, "(")
 		envName = strings.TrimPrefix(envName, "{")
@@ -30,9 +30,14 @@ func ReplaceEnvVariables(input string, ignorePattern string) string {
 
 		envValue, found := os.LookupEnv(envName)
 		if found {
-			return envValue
+			return valueEncoder.Encode(envValue)
 		} else {
 			return match // If the variable is not found, leave the original string as-is
 		}
 	})
+
+	if  valueEncoder.AdditionalCode() != "" && modifiedContent != input && !strings.Contains(modifiedContent, valueEncoder.AdditionalCode()) {
+		modifiedContent += valueEncoder.AdditionalCode()
+	}
+	return modifiedContent
 }

@@ -4,7 +4,9 @@ import (
 	"flag"
 	"fmt"
 	"michaelhenry/envject/parser"
+	"michaelhenry/envject/value_encoders"
 	"os"
+	"strings"
 )
 
 
@@ -13,6 +15,7 @@ func main() {
 	sourcePath := flag.String("file", "", "File to inject the environment variables")
 	outputPath := flag.String("output", "", "The output file. (This creates a new file instead of overriding the original file.)")
 	ignore := flag.String("ignore", "", "Regex pattern to ignore.")
+	obfuscateFor := flag.String("obfuscate-for", "", "Obfuscate for particular programming language. (Example: swift)")
 
 	flag.Bool("debug", false, "Enable debug mode")
 	flag.Parse()
@@ -25,8 +28,17 @@ func main() {
 	}
 
 
+	var valueEncoder value_encoders.ValueEncoder
+	switch strings.ToLower(*obfuscateFor) {
+	case "swift":
+		valueEncoder = value_encoders.NewSwiftValueEncoder()
+	default:
+		valueEncoder = &value_encoders.RawValueEncoder{}
+	}
+
+
 	fileContent := string(fileBytes)
-	updatedContent := parser.ReplaceEnvVariables(fileContent, *ignore)
+	updatedContent := parser.ReplaceEnvVariables(fileContent, *ignore, valueEncoder)
 
 	// Check if debug flag is true
   if flag.Lookup("debug").Value.String() == "true" {
